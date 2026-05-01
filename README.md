@@ -2,7 +2,7 @@
 
 ## SDS - Submit - Failure Report
 
-Reports an install download failure event to a Zapier webhook as a structured JSON payload. Runs as part of the Standard Device Setup (SDS) workflow when the primary installer download source is unavailable.
+Reports an installer download failure event to a Zapier webhook as a structured JSON payload. Runs as part of the Standard Device Setup (SDS) workflow when the primary installer download source is unavailable.
 
 ### Workflow
 
