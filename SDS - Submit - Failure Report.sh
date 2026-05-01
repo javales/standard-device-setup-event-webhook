@@ -95,18 +95,18 @@ validateSerialNumber () {
     sLog "Validation Successful (function: ${FUNCNAME[0]})"
 }
 
-buildSDRDownloadFailurePayload () { # Baseline payload based on the Jamf Setup Manager webhook payload
-    EVENT_TYPE="com.standard.uit-comm.sdr-installer.download-failure"
+buildInstallerDownloadFailurePayload () { # Baseline payload based on the Jamf Setup Manager webhook payload
+    EVENT_TYPE="com.company.standard.installer.download-failure"
     EVENT_ID=$("$UUIDGEN_BINARY" | "$TR_BINARY" '[:upper:]' '[:lower:]')
     EVENT_TIMESTAMP=$("$DATE_BINARY" -u +"%Y-%m-%dT%H:%M:%SZ")
-    EVENT_SUMMARY="SDR Download Failed"
+    EVENT_SUMMARY="Installer Download Failed"
     EVENT_DESCRIPTION="*Standard Device Setup* - resorted to FALLBACK download source"
     EVENT_ERROR_CODE=404
-    EVENT_ERROR_MESSAGE="failed to download from PRIMARY download source: https://example.com/installers/sdr/mac/autoupdater/current/enrollment/SDR%20-%20Enrollment%20Only.dmg)"
-    EVENT_SOURCE_SYSTEM="sdr-installer"
-    EVENT_PROCESS="Jamf SDS SDR Download"
+    EVENT_ERROR_MESSAGE="failed to download from PRIMARY download source: https://example.com/installers/mac/Sample-Installer.dmg)"
+    EVENT_SOURCE_SYSTEM="sample-installer"
+    EVENT_PROCESS="Sample Installer Download"
     EVENT_ENVIRONMENT="production"
-    EVENT_MANAGING_TEAM="EED Systems Engineers"
+    EVENT_MANAGING_TEAM="Systems Engineers"
 
     CURL_PAYLOAD=$("$JQ_BINARY" -n \
         --arg e_type "$EVENT_TYPE" \
@@ -188,7 +188,7 @@ SCRIPT_TIME_START=$($DATE_BINARY "+%Y-%m-%d-%H-%M-%S")
 sLogEcho "Script (${SCRIPT_NAME}) START: ${SCRIPT_TIME_START}"
 validateBinaryFiles
 validateSerialNumber
-buildSDRDownloadFailurePayload
+buildInstallerDownloadFailurePayload
 validatePayload
 sendStatus
 SCRIPT_TIME_END=$("$DATE_BINARY" "+%Y-%m-%d-%H-%M-%S")

@@ -2,7 +2,7 @@
 
 ## SDS - Submit - Failure Report
 
-Reports an SDR download failure event to a Zapier webhook as a structured JSON payload. Runs as part of the Stanford Device Setup (SDS) workflow when the primary SDR download source is unavailable.
+Reports an install download failure event to a Zapier webhook as a structured JSON payload. Runs as part of the Standard Device Setup (SDS) workflow when the primary installer download source is unavailable.
 
 ### Workflow
 
@@ -19,7 +19,7 @@ flowchart TD
     VAL_SN -->|Serial number empty| ERR_SN[Log error]
     ERR_SN --> EXIT_ERR
 
-    VAL_SN -->|Serial number captured| BUILD[buildSDRDownloadFailurePayload\nConstruct JSON via jq\nevent_type · event_id · timestamp\nserial_number · error code 404\nsource/process/team metadata]
+    VAL_SN -->|Serial number captured| BUILD[buildInstallerDownloadFailurePayload\nConstruct JSON via jq\nevent_type · event_id · timestamp\nserial_number · error code 404\nsource/process/team metadata]
 
     BUILD --> VAL_PAY[validatePayload\nParse payload with jq to confirm\nwell-formed JSON]
 
@@ -52,17 +52,17 @@ flowchart TD
 
 ```json
 {
-  "event_type": "edu.stanford.uit-comm.sdr-installer.download-failure",
+  "event_type": "com.company.standard.installer.download-failure",
   "event_id": "<uuid>",
   "timestamp": "<ISO-8601-UTC>",
-  "summary": "SDR Download Failed",
-  "description": "*Stanford Device Setup* - resorted to FALLBACK download source",
+  "summary": "Installer Download Failed",
+  "description": "*Standard Device Setup* - resorted to FALLBACK download source",
   "data": {
-    "source_system": "sdr-installer",
+    "source_system": "sample-installer",
     "impact": {
-      "process": "Jamf SDS SDR Download",
+      "process": "Sample Installer Download",
       "environment": "production",
-      "managing_team": "EED Systems Engineers"
+      "managing_team": "Systems Engineers"
     },
     "device": {
       "serial_number": "<device-serial>"
