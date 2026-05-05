@@ -6,6 +6,7 @@
 # - Send Endpoint Resource Status Reporting event data as json payload to webhook
 #
 # Change History:
+# 05/05/2026 - j.vales - Human context added to readme
 # 04/29/2026 - j.vales - Created
 
 # BINARY VARIABLES
