@@ -1,8 +1,17 @@
-# standard-device-setup-event-webhook
+# Standard Device Setup Event Webhook
 
-## SDS - Submit - Failure Report
+## Context
+Are you familiar with Jamf Setup Manager (https://github.com/jamf/Setup-Manager) and its nifty built-in Started and Finished webhook event keys? You might tie these to Zapier, Tines, or n8n for status tracking, reporting, and/or notifications.
 
-Reports an installer download failure event to a Zapier webhook as a structured JSON payload. Runs as part of the Standard Device Setup (SDS) workflow when the primary installer download source is unavailable.
+Do you also use Second Son Consulting's Baseline solution (https://github.com/SecondSonConsulting/Baseline)? Since it doesn't (yet?) have built-in webhook functionality, this script is a PoC for shimming it into the product. Baseline aside, repurpose it to send structured data to any webhook.
+
+
+## Usage
+This is a basic example for a very specific event -- an app failed to download, so a script is invoked to send a JSON failure event paylod to a webhook listener. You can easily modify the ENDPOINT_URL value and the JSON structure, keys, and values for your own use case (e.g. Baseline Start, Baseline Complete, App 1 Installation Start, App 1 Installation End,...) to track any number of data points about your build process for metrics and alerting purposes.
+
+## Sample Use Case: SDS - Submit - Failure Report
+
+Your hypothetical Standard Device Setup build workflow reports an installer download failure event to a Zapier webhook as a structured JSON payload.
 
 ### Workflow
 
