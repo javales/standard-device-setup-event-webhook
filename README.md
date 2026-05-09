@@ -9,7 +9,7 @@ Do you also use Second Son Consulting's **Baseline** solution (https://github.co
 ## Usage
 This is a basic example for a very specific event -- an app failed to download, so a script is invoked to send a JSON failure event paylod to a webhook listener. You can easily modify the `ENDPOINT_URL` value and the JSON structure, keys, and values for your own use case (e.g. `Baseline Start`, `Baseline Complete`, `App 1 Installation Start`, `App 1 Installation End`,...) to track any number of data points about your build process for metrics and alerting purposes.
 
-## Sample Use Case: SDS - Submit - Failure Report
+## Sample Use Case: SDS - Submit - Failure Event
 
 Your hypothetical "Standard Device Setup" build workflow reports an installer download failure event to a Zapier webhook as a structured JSON payload.
 
